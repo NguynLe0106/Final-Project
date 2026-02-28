@@ -1,9 +1,10 @@
-package prj301.model;
+package prj301.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
+import java.util.Collection;
 import java.util.UUID;
 
 @Entity
@@ -37,6 +38,9 @@ public class User
 
     @Column(name = "deleted_at")
     private Instant deletedAt;
+
+    @ManyToMany
+    private Collection<Role> roles;
 
     public UUID getId()
     {
