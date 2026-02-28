@@ -1,11 +1,11 @@
 package ecommerce.service;
 
 import ecommerce.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class UserService
 {
     private final UserRepository userRepository;
