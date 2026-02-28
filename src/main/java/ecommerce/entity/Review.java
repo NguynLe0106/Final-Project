@@ -1,11 +1,15 @@
 package ecommerce.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
 import java.util.UUID;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "review")
 public class Review
@@ -45,95 +49,5 @@ public class Review
 
     @Column(name = "deleted_date")
     private Instant deletedDate;
-
-    public UUID getId()
-    {
-        return id;
-    }
-
-    public void setId(UUID id)
-    {
-        this.id = id;
-    }
-
-    public String getContent()
-    {
-        return content;
-    }
-
-    public void setContent(String content)
-    {
-        this.content = content;
-    }
-
-    public User getUser()
-    {
-        return user;
-    }
-
-    public void setUser(User user)
-    {
-        this.user = user;
-    }
-
-    public Integer getUpVote()
-    {
-        return upVote;
-    }
-
-    public void setUpVote(Integer upVote)
-    {
-        this.upVote = upVote;
-    }
-
-    public Integer getDownVote()
-    {
-        return downVote;
-    }
-
-    public void setDownVote(Integer downVote)
-    {
-        this.downVote = downVote;
-    }
-
-    public Double getStart()
-    {
-        return start;
-    }
-
-    public void setStart(Double start)
-    {
-        this.start = start;
-    }
-
-    public Instant getCreatedDate()
-    {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Instant createdDate)
-    {
-        this.createdDate = createdDate;
-    }
-
-    public Instant getUpdatedDate()
-    {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(Instant updatedDate)
-    {
-        this.updatedDate = updatedDate;
-    }
-
-    public Instant getDeletedDate()
-    {
-        return deletedDate;
-    }
-
-    public void setDeletedDate(Instant deletedDate)
-    {
-        this.deletedDate = deletedDate;
-    }
 
 }

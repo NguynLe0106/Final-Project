@@ -1,12 +1,16 @@
 package ecommerce.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
 import java.util.Collection;
 import java.util.UUID;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "role")
 public class Role
@@ -32,55 +36,5 @@ public class Role
 
     @ManyToMany
     private Collection<User> users;
-
-    public UUID getId()
-    {
-        return id;
-    }
-
-    public void setId(UUID id)
-    {
-        this.id = id;
-    }
-
-    public String getRoleName()
-    {
-        return roleName;
-    }
-
-    public void setRoleName(String roleName)
-    {
-        this.roleName = roleName;
-    }
-
-    public Instant getCreatedAt()
-    {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt)
-    {
-        this.createdAt = createdAt;
-    }
-
-    public Instant getUpdatedAt()
-    {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Instant updatedAt)
-    {
-        this.updatedAt = updatedAt;
-    }
-
-    public Instant getDeletedAt()
-    {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(Instant deletedAt)
-    {
-        this.deletedAt = deletedAt;
-    }
 
 }

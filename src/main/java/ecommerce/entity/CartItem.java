@@ -1,11 +1,15 @@
 package ecommerce.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
 import java.util.UUID;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "cart_item")
 public class CartItem
@@ -33,65 +37,5 @@ public class CartItem
 
     @Column(name = "deleted_at")
     private Instant deletedAt;
-
-    public UUID getId()
-    {
-        return id;
-    }
-
-    public void setId(UUID id)
-    {
-        this.id = id;
-    }
-
-    public Cart getCart()
-    {
-        return cart;
-    }
-
-    public void setCart(Cart cart)
-    {
-        this.cart = cart;
-    }
-
-    public Product getProduct()
-    {
-        return product;
-    }
-
-    public void setProduct(Product product)
-    {
-        this.product = product;
-    }
-
-    public Instant getCreatedAt()
-    {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt)
-    {
-        this.createdAt = createdAt;
-    }
-
-    public Instant getUpdatedAt()
-    {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Instant updatedAt)
-    {
-        this.updatedAt = updatedAt;
-    }
-
-    public Instant getDeletedAt()
-    {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(Instant deletedAt)
-    {
-        this.deletedAt = deletedAt;
-    }
 
 }

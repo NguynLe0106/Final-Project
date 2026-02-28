@@ -1,11 +1,15 @@
 package ecommerce.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
 import java.util.UUID;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "cart")
 public class Cart
@@ -29,55 +33,5 @@ public class Cart
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-
-    public UUID getId()
-    {
-        return id;
-    }
-
-    public void setId(UUID id)
-    {
-        this.id = id;
-    }
-
-    public Instant getCreatedDate()
-    {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Instant createdDate)
-    {
-        this.createdDate = createdDate;
-    }
-
-    public Instant getUpdatedDate()
-    {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(Instant updatedDate)
-    {
-        this.updatedDate = updatedDate;
-    }
-
-    public Instant getDeletedDate()
-    {
-        return deletedDate;
-    }
-
-    public void setDeletedDate(Instant deletedDate)
-    {
-        this.deletedDate = deletedDate;
-    }
-
-    public User getUser()
-    {
-        return user;
-    }
-
-    public void setUser(User user)
-    {
-        this.user = user;
-    }
 
 }

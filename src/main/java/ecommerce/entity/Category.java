@@ -1,11 +1,15 @@
 package ecommerce.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
 import java.util.UUID;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "category")
 public class Category
@@ -28,55 +32,5 @@ public class Category
 
     @Column(name = "updated_at")
     private Instant updatedAt;
-
-    public UUID getId()
-    {
-        return id;
-    }
-
-    public void setId(UUID id)
-    {
-        this.id = id;
-    }
-
-    public String getCategoryName()
-    {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName)
-    {
-        this.categoryName = categoryName;
-    }
-
-    public Instant getCreatedAt()
-    {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt)
-    {
-        this.createdAt = createdAt;
-    }
-
-    public Instant getDeletedAt()
-    {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(Instant deletedAt)
-    {
-        this.deletedAt = deletedAt;
-    }
-
-    public Instant getUpdatedAt()
-    {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Instant updatedAt)
-    {
-        this.updatedAt = updatedAt;
-    }
 
 }

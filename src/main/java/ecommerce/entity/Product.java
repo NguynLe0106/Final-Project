@@ -1,11 +1,15 @@
 package ecommerce.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
 import java.util.UUID;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "product")
 public class Product
@@ -50,115 +54,5 @@ public class Product
     @Lob
     @Column(name = "images")
     private String images;
-
-    public UUID getId()
-    {
-        return id;
-    }
-
-    public void setId(UUID id)
-    {
-        this.id = id;
-    }
-
-    public String getProductName()
-    {
-        return productName;
-    }
-
-    public void setProductName(String productName)
-    {
-        this.productName = productName;
-    }
-
-    public Instant getCreatedAt()
-    {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt)
-    {
-        this.createdAt = createdAt;
-    }
-
-    public Instant getUpdatedAt()
-    {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Instant updatedAt)
-    {
-        this.updatedAt = updatedAt;
-    }
-
-    public Instant getDeletedAt()
-    {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(Instant deletedAt)
-    {
-        this.deletedAt = deletedAt;
-    }
-
-    public Category getCategory()
-    {
-        return category;
-    }
-
-    public void setCategory(Category category)
-    {
-        this.category = category;
-    }
-
-    public String getSku()
-    {
-        return sku;
-    }
-
-    public void setSku(String sku)
-    {
-        this.sku = sku;
-    }
-
-    public Double getPrice()
-    {
-        return price;
-    }
-
-    public void setPrice(Double price)
-    {
-        this.price = price;
-    }
-
-    public String getStatus()
-    {
-        return status;
-    }
-
-    public void setStatus(String status)
-    {
-        this.status = status;
-    }
-
-    public String getDescription()
-    {
-        return description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
-
-    public String getImages()
-    {
-        return images;
-    }
-
-    public void setImages(String images)
-    {
-        this.images = images;
-    }
 
 }
