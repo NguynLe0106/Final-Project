@@ -15,8 +15,7 @@ import java.util.UUID;
 public class Review
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "review_id_gen")
-    @SequenceGenerator(name = "review_id_gen", sequenceName = " ")
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false)
     private UUID id;
 

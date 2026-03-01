@@ -15,8 +15,7 @@ import java.util.UUID;
 public class AuditLog
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "audit_log_id_gen")
-    @SequenceGenerator(name = "audit_log_id_gen", sequenceName = " ")
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false)
     private UUID id;
 

@@ -16,8 +16,7 @@ import java.util.UUID;
 public class Role
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_id_gen")
-    @SequenceGenerator(name = "role_id_gen", sequenceName = " ")
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false)
     private UUID id;
 
@@ -33,7 +32,4 @@ public class Role
 
     @Column(name = "deleted_at")
     private Instant deletedAt;
-
-    @ManyToMany
-    private Collection<User> users;
 }

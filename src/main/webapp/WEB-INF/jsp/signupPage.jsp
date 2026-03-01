@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <%@ include file="common/common.jspf" %>
@@ -20,7 +20,7 @@
                 </h1>
                 <p class="text-base text-black mb-10">Enter your details below</p>
 
-                <form action="<c:url value='/signup'/>" method="post" class="flex flex-col gap-10">
+                <form action="<c:url value='/user/signup'/>" method="post" class="flex flex-col gap-10">
                     <div class="flex flex-col gap-2">
                         <label class="text-base text-black opacity-60">Name</label>
                         <input type="text" name="name" placeholder="Name" required

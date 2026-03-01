@@ -15,8 +15,7 @@ import java.util.UUID;
 public class Category
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_id_gen")
-    @SequenceGenerator(name = "category_id_gen", sequenceName = " ")
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false)
     private UUID id;
 
