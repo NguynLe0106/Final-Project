@@ -36,5 +36,4 @@ public class Role
 
     @ManyToMany
     private Collection<User> users;
-
 }
