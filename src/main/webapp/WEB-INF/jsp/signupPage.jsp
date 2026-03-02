@@ -9,7 +9,7 @@
     <div class="flex flex-col lg:flex-row flex-1">
         <!-- Left panel: illustration -->
         <div class="w-full lg:w-[805px] min-h-[400px] lg:min-h-[781px] bg-[#cbe4e8] flex items-center justify-center rounded-br-md rounded-tr-md overflow-hidden">
-            <img src="https://cdn.pixabay.com/photo/2021/02/12/07/03/smartphone-6009259_1280.png" alt="Mobile shopping" class="max-w-full max-h-[500px] lg:max-h-[706px] object-contain opacity-90">
+            <img src="<c:url value='/images/login.png'/>" alt="Mobile shopping" class="max-w-full max-h-[500px] lg:max-h-[706px] object-contain opacity-90">
         </div>
 
         <!-- Right panel: form -->
@@ -56,7 +56,7 @@
 
                 <p class="mt-8 text-base text-black opacity-70">
                     Already have account?
-                    <a href="#" class="font-medium underline hover:no-underline">Log in</a>
+                    <a href="${pageContext.request.contextPath}/user/login" class="font-medium underline hover:no-underline">Log in</a>
                 </p>
             </div>
         </div>

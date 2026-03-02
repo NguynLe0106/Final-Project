@@ -32,7 +32,7 @@
                 <h1 class="text-5xl font-bold leading-tight">Up to 10%<br>off Voucher</h1>
                 <a href="#" class="inline-block border-b border-white pb-1 font-medium hover:text-gray-300">Shop Now &rarr;</a>
             </div>
-            <img src="<c:url value='/images/iphone.png'/>" alt="iPhone" class="absolute right-0 bottom-0 w-2/3 object-contain opacity-80">
+            <img src="/images/iphone.png" alt="iPhone" class="absolute right-0 bottom-0 w-2/3 object-contain opacity-80">
             <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
                 <div class="w-3 h-3 bg-gray-500 rounded-full"></div>
                 <div class="w-3 h-3 bg-[#DB4444] rounded-full border-2 border-white"></div>
@@ -431,7 +431,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 h-[600px]">
             <div class="bg-black rounded relative group overflow-hidden">
-                <img src="<c:url value='/images/ps5.png'/>"  class="absolute bottom-0 w-full h-auto object-cover opacity-80">
+                <img src="/images/ps5.png"  class="absolute bottom-0 w-full h-auto object-cover opacity-80">
                 <div class="absolute bottom-8 left-8 text-white space-y-2">
                     <h3 class="text-2xl font-bold">PlayStation 5</h3>
                     <p class="text-sm text-gray-300">Black and White version of the PS5 <br> coming out on sale.</p>
@@ -441,7 +441,7 @@
 
             <div class="grid grid-rows-2 gap-6">
                 <div class="bg-[#0D0D0D] rounded relative overflow-hidden">
-                    <img src="<c:url value='/images/women.png'/>" alt="Logo" class="absolute right-0 bottom-0 h-full opacity-80">
+                    <img src="/images/women.png" alt="Logo" class="absolute right-0 bottom-0 h-full opacity-80">
                     <div class="absolute bottom-8 left-8 text-white space-y-2">
                         <h3 class="text-2xl font-bold">Women's Collections</h3>
                         <p class="text-sm text-gray-300">Featured woman collections that <br> give you another vibe.</p>
@@ -450,14 +450,14 @@
                 </div>
                 <div class="grid grid-cols-2 gap-6">
                     <div class="bg-black rounded relative">
-                        <img src="<c:url value='/images/speaker.png'/>" alt="Logo" class="absolute right-0 bottom-0 h-full opacity-80">
+                        <img src="/images/speaker.png" alt="Logo" class="absolute right-0 bottom-0 h-full opacity-80">
                         <div class="absolute bottom-4 left-4 text-white">
                             <h4 class="font-bold">Speakers</h4>
                             <a href="#" class="text-xs border-b border-white">Shop Now</a>
                         </div>
                     </div>
                     <div class="bg-black rounded relative">
-                        <img src="<c:url value='/images/perfume.png'/>" alt="Logo" class="absolute right-0 bottom-0 h-full opacity-80">
+                        <img src="/images/perfume.png" alt="Logo" class="absolute right-0 bottom-0 h-full opacity-80">
                         <div class="absolute bottom-4 left-4 text-white">
                             <h4 class="font-bold">Perfume</h4>
                             <a href="#" class="text-xs border-b border-white">Shop Now</a>

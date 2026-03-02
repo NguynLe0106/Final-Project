@@ -9,7 +9,7 @@
     <div class="container mx-auto px-6 lg:px-20 py-8">
         <!-- Breadcrumbs -->
         <nav class="text-sm text-gray-500 mb-8">
-            <a href="<c:url value='/account'/>" class="hover:text-black">Account</a>
+            <a href="<c:url value='/user/user/profile'/>" class="hover:text-black">Account</a>
             <span class="mx-1">/</span>
             <a href="#" class="hover:text-black">Gaming</a>
             <span class="mx-1">/</span>

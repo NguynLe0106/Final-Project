@@ -17,4 +17,18 @@ public class UserController
         model.addAttribute("currentPage", "signup");
         return "signupPage";
     }
+
+    @GetMapping("/login")
+    public String login(Model model)
+    {
+        model.addAttribute("currentPage", "login");
+        return "loginPage";
+    }
+
+    @GetMapping("/profile")
+    public String profile(Model model)
+    {
+        model.addAttribute("currentPage", "profile");
+        return "userPage";
+    }
 }
