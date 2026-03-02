@@ -9,12 +9,12 @@
     <div class="container mx-auto px-6 lg:px-20">
         <!-- Breadcrumbs -->
         <nav class="text-sm text-gray-500 mb-8">
-            <a href="<c:url value='/'/>" class="hover:text-black">Home</a>
+            <a href="${pageContext.request.contextPath}/" class="hover:text-black">Home</a>
             <span class="mx-1">/</span>
             <span class="text-black font-medium">Cart</span>
         </nav>
 
-        <form action="<c:url value='/cart'/>" method="post">
+        <form action="<c:url value='/cart/'/>" method="post">
             <!-- Cart table -->
             <div class="border border-gray-200 rounded-md overflow-hidden mb-6">
                 <div class="overflow-x-auto">

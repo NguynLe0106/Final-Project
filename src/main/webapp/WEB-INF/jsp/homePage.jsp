@@ -429,7 +429,7 @@
         </div>
         <h2 class="text-3xl font-bold mb-10">New Arrival</h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 h-[600px]">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-black rounded relative group overflow-hidden">
                 <img src="/images/ps5.png"  class="absolute bottom-0 w-full h-auto object-cover opacity-80">
                 <div class="absolute bottom-8 left-8 text-white space-y-2">
@@ -449,15 +449,15 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-6">
-                    <div class="bg-black rounded relative">
-                        <img src="/images/speaker.png" alt="Logo" class="absolute right-0 bottom-0 h-full opacity-80">
+                    <div class="bg-black rounded relative items-center flex items-center justify-center">
+                        <img src="/images/speaker.png" alt="Logo" class="h-3/4 object-contain opacity-80">
                         <div class="absolute bottom-4 left-4 text-white">
                             <h4 class="font-bold">Speakers</h4>
                             <a href="#" class="text-xs border-b border-white">Shop Now</a>
                         </div>
                     </div>
-                    <div class="bg-black rounded relative">
-                        <img src="/images/perfume.png" alt="Logo" class="absolute right-0 bottom-0 h-full opacity-80">
+                    <div class="bg-black rounded relative items-center flex items-center justify-center">
+                        <img src="/images/perfume.png" alt="Logo" class="h-3/4 object-contain opacity-800">
                         <div class="absolute bottom-4 left-4 text-white">
                             <h4 class="font-bold">Perfume</h4>
                             <a href="#" class="text-xs border-b border-white">Shop Now</a>

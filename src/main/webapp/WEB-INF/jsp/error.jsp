@@ -10,7 +10,7 @@
     <!-- Breadcrumb -->
     <div class="container mx-auto px-6 lg:px-20 pt-20 pb-10">
         <div class="flex items-center gap-3 text-sm">
-            <a href="<c:url value='/'/>" class="text-gray-500 hover:text-black">Home</a>
+            <a href="${pageContext.request.contextPath}/" class="text-gray-500 hover:text-black">Home</a>
             <span class="text-gray-500">/</span>
             <span class="text-black">404 Error</span>
         </div>
