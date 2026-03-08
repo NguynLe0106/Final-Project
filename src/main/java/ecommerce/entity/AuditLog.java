@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -23,7 +24,7 @@ public class AuditLog
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(name = "table_name", nullable = false, length = 1)
+    @Column(name = "table_name", nullable = false, length = 100)
     private String tableName;
 
     @Lob
@@ -34,9 +35,10 @@ public class AuditLog
     @Column(name = "object_after")
     private String objectAfter;
 
-    @Column(name = "\"action\"", nullable = false, length = 1)
+    @Column(name = "\"action\"", nullable = false, length = 100)
     private String action;
 
+    @CreationTimestamp
     @ColumnDefault("getdate()")
     @Column(name = "created_at", nullable = false)
     private Instant createdAt;

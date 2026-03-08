@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -19,9 +21,10 @@ public class Product
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    @Column(name = "product_name", nullable = false, length = 1)
+    @Column(name = "product_name", nullable = false, length = 255)
     private String productName;
 
+    @CreationTimestamp
     @ColumnDefault("getdate()")
     @Column(name = "created_at", nullable = false)
     private Instant createdAt;
@@ -36,14 +39,14 @@ public class Product
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    @Column(name = "sku", nullable = false, length = 30)
+    @Column(name = "sku", nullable = false, length = 50)
     private String sku;
 
     @ColumnDefault("0.0")
     @Column(name = "price", nullable = false)
     private Double price;
 
-    @Column(name = "status", nullable = false, length = 1)
+    @Column(name = "status", nullable = false, length = 20)
     private String status;
 
     @Lob

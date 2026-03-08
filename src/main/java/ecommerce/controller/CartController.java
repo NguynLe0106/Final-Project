@@ -2,6 +2,7 @@ package ecommerce.controller;
 import ecommerce.entity.Product;
 import ecommerce.repository.ProductRepository;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,18 +28,13 @@ public class CartController
 {
     private final ProductRepository productRepository;
 
-    /**
-     * Khởi tạo giỏ hàng đơn giản, lưu trong session dưới dạng Map<productId, quantity>.
-     */
     @ModelAttribute("cart")
     public Map<UUID, Integer> initCart()
     {
         return new LinkedHashMap<>();
     }
 
-    /**
-     * Hiển thị giỏ hàng.
-     */
+
     @GetMapping("/view")
     public String viewCart(@ModelAttribute("cart") Map<UUID, Integer> cart, Model model)
     {
@@ -63,9 +59,7 @@ public class CartController
         return "cartPage";
     }
 
-    /**
-     * Thêm sản phẩm vào giỏ hàng.
-     */
+
     @PostMapping("/add")
     public String addToCart(
             @RequestParam("productId") UUID productId,
@@ -86,10 +80,6 @@ public class CartController
         return "redirect:/cart/view";
     }
 
-    /**
-     * Cập nhật số lượng một sản phẩm trong giỏ.
-     * Nếu quantity <= 0 thì xóa sản phẩm khỏi giỏ.
-     */
     @PostMapping("/update")
     public String updateItem(
             @RequestParam("productId") UUID productId,
@@ -114,9 +104,6 @@ public class CartController
         return "redirect:/cart/view";
     }
 
-    /**
-     * Xóa một sản phẩm khỏi giỏ.
-     */
     @PostMapping("/remove")
     public String removeItem(
             @RequestParam("productId") UUID productId,
@@ -127,9 +114,7 @@ public class CartController
         return "redirect:/cart/view";
     }
 
-    /**
-     * Xóa toàn bộ giỏ hàng.
-     */
+
     @PostMapping("/clear")
     public String clearCart(@ModelAttribute("cart") Map<UUID, Integer> cart)
     {
@@ -137,9 +122,8 @@ public class CartController
         return "redirect:/cart/view";
     }
 
-    /**
-     * Dữ liệu hiển thị cho từng dòng giỏ hàng.
-     */
+
+    @Getter
     public static class CartLine
     {
         private final Product product;
@@ -151,14 +135,5 @@ public class CartController
             this.quantity = quantity;
         }
 
-        public Product getProduct()
-        {
-            return product;
-        }
-
-        public int getQuantity()
-        {
-            return quantity;
-        }
     }
 }

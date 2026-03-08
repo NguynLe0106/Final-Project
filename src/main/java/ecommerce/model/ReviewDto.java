@@ -1,23 +1,15 @@
 package ecommerce.model;
 
-import lombok.Value;
+import ecommerce.entity.Review;
 
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.UUID;
 
 /**
- * DTO for {@link ecommerce.entity.Review}
+ * DTO for {@link Review}
  */
-@Value
-public class ReviewDto implements Serializable
+public record ReviewDto(UUID id, String content, Integer upVote, Integer downVote, Double start, Instant createdDate,
+                        Instant updatedDate, Instant deletedDate) implements Serializable
 {
-    UUID id;
-    String content;
-    Integer upVote;
-    Integer downVote;
-    Double start;
-    Instant createdDate;
-    Instant updatedDate;
-    Instant deletedDate;
 }

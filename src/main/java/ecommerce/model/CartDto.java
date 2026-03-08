@@ -1,19 +1,14 @@
 package ecommerce.model;
 
-import lombok.Value;
+import ecommerce.entity.Cart;
 
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.UUID;
 
 /**
- * DTO for {@link ecommerce.entity.Cart}
+ * DTO for {@link Cart}
  */
-@Value
-public class CartDto implements Serializable
+public record CartDto(UUID id, Instant createdDate, Instant updatedDate, Instant deletedDate) implements Serializable
 {
-    UUID id;
-    Instant createdDate;
-    Instant updatedDate;
-    Instant deletedDate;
 }

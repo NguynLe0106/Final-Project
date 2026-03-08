@@ -4,9 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
-import java.util.Collection;
 import java.util.UUID;
 
 @Setter
@@ -23,6 +23,7 @@ public class Role
     @Column(name = "role_name", length = 20)
     private String roleName;
 
+    @CreationTimestamp
     @ColumnDefault("getdate()")
     @Column(name = "created_at", nullable = false)
     private Instant createdAt;

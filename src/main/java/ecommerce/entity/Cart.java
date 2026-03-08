@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -19,6 +21,7 @@ public class Cart
     @Column(name = "id", nullable = false)
     private UUID id;
 
+    @CreationTimestamp
     @ColumnDefault("getdate()")
     @Column(name = "created_date", nullable = false)
     private Instant createdDate;

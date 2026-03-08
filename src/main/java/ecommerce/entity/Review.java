@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -39,6 +41,7 @@ public class Review
     @Column(name = "start", nullable = false)
     private Double start;
 
+    @CreationTimestamp
     @ColumnDefault("getdate()")
     @Column(name = "created_date", nullable = false)
     private Instant createdDate;

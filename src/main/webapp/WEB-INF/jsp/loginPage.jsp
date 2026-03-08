@@ -42,6 +42,10 @@
                 <p class="mt-8 text-base text-black opacity-70">
                     <a href="#" class="font-medium underline hover:no-underline">Forget password?</a>
                 </p>
+                <p>
+                    Don't have account?
+                    <a href="${pageContext.request.contextPath}/user/signup" class="font-medium underline hover:no-underline">Sign up</a>
+                </p>
             </div>
         </div>
     </div>

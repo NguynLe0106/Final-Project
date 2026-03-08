@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
 import java.util.Collection;
@@ -21,20 +22,21 @@ public class User
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    @Column(name = "username", nullable = false, length = 1)
-    private String username;
+    @Column(name = "name", nullable = false, length = 255)
+    private String name;
 
-    @Column(name = "email", length = 1)
+    @Column(name = "email", length = 255)
     private String email;
 
-    @Column(name = "phone", length = 1)
+    @Column(name = "phone", length = 255)
     private String phone;
 
-    @Column(name = "password", nullable = false, length = 1)
+    @Column(name = "password", nullable = false, length = 255)
     private String password;
 
+    @CreationTimestamp
     @ColumnDefault("getdate()")
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
 
     @Column(name = "updated_at")
@@ -45,5 +47,11 @@ public class User
 
     @ManyToMany
     private Collection<Role> roles;
+
+    @PrePersist
+    @PreUpdate
+    public void hashPassword() {
+
+    }
 
 }

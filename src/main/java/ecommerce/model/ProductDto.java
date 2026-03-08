@@ -1,25 +1,16 @@
 package ecommerce.model;
 
-import lombok.Value;
+import ecommerce.entity.Product;
 
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.UUID;
 
 /**
- * DTO for {@link ecommerce.entity.Product}
+ * DTO for {@link Product}
  */
-@Value
-public class ProductDto implements Serializable
+public record ProductDto(UUID id, String productName, Instant createdAt, Instant updatedAt, Instant deletedAt,
+                         String sku, Double price, String status, String description,
+                         String images) implements Serializable
 {
-    UUID id;
-    String productName;
-    Instant createdAt;
-    Instant updatedAt;
-    Instant deletedAt;
-    String sku;
-    Double price;
-    String status;
-    String description;
-    String images;
 }
