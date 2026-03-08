@@ -22,12 +22,10 @@
 
                 <form action="<c:url value='/user/signup'/>" method="post" class="flex flex-col gap-10">
                     <div class="flex flex-col gap-2">
-                        <label class="text-base text-black opacity-60">Email or Phone Number</label>
-                        <input type="text" name="emailOrPhone" placeholder="Email or Phone Number" required
+                        <input type="text" name="emailOrPhone" placeholder="Email" required
                                class="bg-transparent border-0 border-b border-black border-opacity-40 py-2 text-base focus:outline-none focus:border-[#DB4444] placeholder-black placeholder-opacity-40">
                     </div>
                     <div class="flex flex-col gap-2">
-                        <label class="text-base text-black opacity-60">Password</label>
                         <input type="password" name="password" placeholder="Password" required
                                class="bg-transparent border-0 border-b border-black border-opacity-40 py-2 text-base focus:outline-none focus:border-[#DB4444] placeholder-black placeholder-opacity-40">
                     </div>

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <%@ include file="common/common.jspf" %>
 <body>
@@ -19,27 +20,30 @@
                     Create an account
                 </h1>
                 <p class="text-base text-black mb-10">Enter your details below</p>
+                <!-- message error -->
+                <%--                <c:if test="${not empty error}">--%>
+                <%--                    <div class="bg-red-100 text-red-700 p-4 mb-6 rounded">--%>
+                <%--                        ${error}--%>
+                <%--                    </div>--%>
+                <%--                </c:if>--%>
 
-                <form action="<c:url value='/user/signup'/>" method="post" class="flex flex-col gap-10">
+                <form:form action="/user/signup" method="post" class="flex flex-col gap-10" modelAttribute="signup">
                     <div class="flex flex-col gap-2">
-                        <label class="text-base text-black opacity-60">Name</label>
-                        <input type="text" name="name" placeholder="Name" required
-                               class="bg-transparent border-0 border-b border-black border-opacity-40 py-2 text-base focus:outline-none focus:border-[#DB4444] placeholder-black placeholder-opacity-40">
+                        <form:input path="name" type="text" name="name" placeholder="Name" class="bg-transparent border-0 border-b border-black border-opacity-40 py-2 text-base focus:outline-none focus:border-[#DB4444] placeholder-black placeholder-opacity-40"/>
+                        <form:errors path="name" cssClass="text-red-700"/>
+
                     </div>
                     <div class="flex flex-col gap-2">
-                        <label class="text-base text-black opacity-60">Email</label>
-                        <input type="text" name="email" placeholder="Email" required
-                               class="bg-transparent border-0 border-b border-black border-opacity-40 py-2 text-base focus:outline-none focus:border-[#DB4444] placeholder-black placeholder-opacity-40">
+                        <form:input path="email" type="text" name="email" placeholder="Email" class="bg-transparent border-0 border-b border-black border-opacity-40 py-2 text-base focus:outline-none focus:border-[#DB4444] placeholder-black placeholder-opacity-40"/>
+                        <form:errors path="email" cssClass="text-red-700"/>
                     </div>
                     <div class="flex flex-col gap-2">
-                        <label class="text-base text-black opacity-60">Phone Number (Optional)</label>
-                        <input type="text" name="phone" placeholder="Phone Number" required
-                               class="bg-transparent border-0 border-b border-black border-opacity-40 py-2 text-base focus:outline-none focus:border-[#DB4444] placeholder-black placeholder-opacity-40">
+                        <form:input type="text" name="phone" placeholder="Phone Number (Optional)" class="bg-transparent border-0 border-b border-black border-opacity-40 py-2 text-base focus:outline-none focus:border-[#DB4444] placeholder-black placeholder-opacity-40" path="phone"/>
+                        <form:errors path="phone" cssClass="text-red-700"/>
                     </div>
                     <div class="flex flex-col gap-2">
-                        <label class="text-base text-black opacity-60">Password</label>
-                        <input type="password" name="password" placeholder="Password" required
-                               class="bg-transparent border-0 border-b border-black border-opacity-40 py-2 text-base focus:outline-none focus:border-[#DB4444] placeholder-black placeholder-opacity-40">
+                            <form:password name="password" placeholder="Password" path="password" class="bg-transparent border-0 border-b border-black border-opacity-40 py-2 text-base focus:outline-none focus:border-[#DB4444] placeholder-black placeholder-opacity-40"/>
+                        <form:errors path="password" cssClass="text-red-700"/>
                     </div>
 
                     <div class="flex flex-col gap-4">
@@ -47,11 +51,12 @@
                             Create Account
                         </button>
                     </div>
-                </form>
+                </form:form>
 
                 <p class="mt-8 text-base text-black opacity-70">
                     Already have account?
-                    <a href="${pageContext.request.contextPath}/user/login" class="font-medium underline hover:no-underline">Log in</a>
+                    <a href="${pageContext.request.contextPath}/user/login" class="font-medium underline hover:no-underline">Log
+                        in</a>
                 </p>
             </div>
         </div>
