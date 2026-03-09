@@ -35,29 +35,6 @@ public class CartController
     }
 
 
-    @GetMapping("/view")
-    public String viewCart(@ModelAttribute("cart") Map<UUID, Integer> cart, Model model)
-    {
-        List<CartLine> lines = cart.entrySet()
-                .stream()
-                .map(entry -> {
-                    UUID productId = entry.getKey();
-                    Integer quantity = entry.getValue();
-                    Product product = productRepository.findById(productId).orElse(null);
-                    if (product == null)
-                    {
-                        return null;
-                    }
-                    return new CartLine(product, quantity);
-                })
-                .filter(Objects::nonNull)
-                .collect(Collectors.toList());
-
-        model.addAttribute("cartLines", lines);
-        model.addAttribute("currentPage", "cart");
-
-        return "cartPage";
-    }
 
 
     @PostMapping("/add")
