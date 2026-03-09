@@ -38,6 +38,9 @@ dependencies {
     implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl'
     implementation("at.favre.lib:bcrypt:0.10.2")
 
+
+    
+
 }
 
 hibernate {
