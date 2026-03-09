@@ -1,5 +1,6 @@
 package ecommerce.service.impl;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import ecommerce.entity.User;
 import ecommerce.model.UserDto;
 import ecommerce.repository.UserRepository;
@@ -27,5 +28,24 @@ public class UserServiceImpl implements ecommerce.service.UserService
         var savedUser = userRepository.save(user);
         BeanUtils.copyProperties(savedUser, userDto);
         return userDto;
+    }
+
+    @Override
+    public boolean login(String email, String password)
+    {
+        var userOpt = userRepository.findUserByEmail(email);
+        if (userOpt == null)
+        {
+            throw new IllegalArgumentException("User with email " + email + " not found");
+        }
+
+        String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
+        BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), bcryptHashString);
+        if (!result.toString().equals(userOpt.getPassword()))
+        {
+            throw new IllegalArgumentException("Invalid password for user with email " + email);
+        }
+
+        return true;
     }
 }
