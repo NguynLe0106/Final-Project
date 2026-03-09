@@ -1,4 +1,4 @@
-package ecommerce.model;
+package ecommerce.model.cart;
 
 import ecommerce.entity.CartItem;
 

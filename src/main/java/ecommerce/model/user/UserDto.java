@@ -1,4 +1,4 @@
-package ecommerce.model;
+package ecommerce.model.user;
 
 import ecommerce.entity.User;
 import jakarta.validation.constraints.*;

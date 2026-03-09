@@ -1,4 +1,4 @@
-package ecommerce.model;
+package ecommerce.model.review;
 
 import ecommerce.entity.Review;
 
