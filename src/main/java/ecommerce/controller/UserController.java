@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 
-import java.util.UUID;
-
 @Log4j2
 @AllArgsConstructor
 @Controller
@@ -40,6 +38,30 @@ public class UserController
     public String userPage(Model model)
     {
         return "userPage";
+    }
+
+    @PostMapping("/login")
+    public String login(String email, String password, Model model)
+    {
+        try
+        {
+            log.info("Attempting to log in user: {}", email);
+            if (!userService.login(email, password))
+            {
+                log.error("Login failed for user: {}", email);
+                model.addAttribute("error", "Invalid username or password. Please try again.");
+                model.addAttribute("email", email);
+                return "loginPage";
+            }
+            log.info("User logged in successfully: {}", email);
+            return "redirect:/";
+        }
+        catch (IllegalArgumentException e)
+        {
+            log.error("Login error for user {}: {}", e, e.getMessage());
+            model.addAttribute("error", e.getMessage());
+            return "loginPage";
+        }
     }
 
     @PostMapping("/signup")
