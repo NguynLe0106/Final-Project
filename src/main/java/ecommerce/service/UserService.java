@@ -1,6 +1,6 @@
 package ecommerce.service;
 
-import ecommerce.model.UserDto;
+import ecommerce.model.user.UserDto;
 
 public interface UserService
 {

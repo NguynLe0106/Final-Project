@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <%@ include file="common/common.jspf" %>
 <body>
@@ -20,29 +21,38 @@
                 </h1>
                 <p class="text-base text-black mb-10">Enter your details below</p>
 
-                <form action="<c:url value='/user/signup'/>" method="post" class="flex flex-col gap-10">
+                <form:form action="/user/signup" method="post" modelAttribute="loginForm" class="flex flex-col gap-10">
                     <div class="flex flex-col gap-2">
-                        <input type="text" name="emailOrPhone" placeholder="Email" required
-                               class="bg-transparent border-0 border-b border-black border-opacity-40 py-2 text-base focus:outline-none focus:border-[#DB4444] placeholder-black placeholder-opacity-40">
+                        <form:input path="email" type="text" name="email" placeholder="Email"
+                                    class="bg-transparent border-0 border-b border-black border-opacity-40 py-2 text-base focus:outline-none focus:border-[#DB4444] placeholder-black placeholder-opacity-40"/>
+                        <form:errors path="email" cssClass="text-red-700"/>
                     </div>
                     <div class="flex flex-col gap-2">
-                        <input type="password" name="password" placeholder="Password" required
-                               class="bg-transparent border-0 border-b border-black border-opacity-40 py-2 text-base focus:outline-none focus:border-[#DB4444] placeholder-black placeholder-opacity-40">
+                        <form:input path="password" type="password" name="password" placeholder="Password"
+                                    class="bg-transparent border-0 border-b border-black border-opacity-40 py-2 text-base focus:outline-none focus:border-[#DB4444] placeholder-black placeholder-opacity-40"/>
+                        <form:errors path="password" cssClass="text-red-700"/>
                     </div>
 
+                    <!-- Error message -->
+                    <c:if test="${not empty error}">
+                        <div class="bg-red-100 text-red-700 p-4 mb-6 rounded">
+                            ${error}
+                        </div>
+                    </c:if>
                     <div class="flex flex-col gap-4">
                         <button type="submit" class="w-full bg-[#DB4444] text-white font-medium text-base py-4 px-12 rounded hover:bg-red-600 transition">
                             Login
                         </button>
                     </div>
-                </form>
+                </form:form>
 
                 <p class="mt-8 text-base text-black opacity-70">
                     <a href="#" class="font-medium underline hover:no-underline">Forget password?</a>
                 </p>
                 <p>
                     Don't have account?
-                    <a href="${pageContext.request.contextPath}/user/signup" class="font-medium underline hover:no-underline">Sign up</a>
+                    <a href="${pageContext.request.contextPath}/user/signup" class="font-medium underline hover:no-underline">Sign
+                        up</a>
                 </p>
             </div>
         </div>

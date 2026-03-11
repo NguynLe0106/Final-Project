@@ -1,6 +1,7 @@
 package ecommerce.controller;
 
-import ecommerce.model.UserDto;
+import ecommerce.model.user.LoginDto;
+import ecommerce.model.user.UserDto;
 import ecommerce.service.UserService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -31,6 +32,7 @@ public class UserController
     @GetMapping("/login")
     public String loginPage(Model model)
     {
+        model.addAttribute("loginForm", new LoginDto());
         return "loginPage";
     }
 
@@ -41,19 +43,19 @@ public class UserController
     }
 
     @PostMapping("/login")
-    public String login(String email, String password, Model model)
+    public String login(@ModelAttribute("loginForm") LoginDto loginDto, BindingResult result,  Model model)
     {
         try
         {
-            log.info("Attempting to log in user: {}", email);
-            if (!userService.login(email, password))
+            log.info("Attempting to log in user: {}", loginDto);
+            if (!userService.login(loginDto.getEmail(), loginDto.getPassword()))
             {
-                log.error("Login failed for user: {}", email);
+                log.error("Login failed for user: {}", loginDto);
                 model.addAttribute("error", "Invalid username or password. Please try again.");
-                model.addAttribute("email", email);
+                model.addAttribute("loginForm", loginDto);
                 return "loginPage";
             }
-            log.info("User logged in successfully: {}", email);
+            log.info("User logged in successfully: {}", loginDto.getEmail());
             return "redirect:/";
         }
         catch (IllegalArgumentException e)

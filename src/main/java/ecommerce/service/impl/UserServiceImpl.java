@@ -2,7 +2,7 @@ package ecommerce.service.impl;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import ecommerce.entity.User;
-import ecommerce.model.UserDto;
+import ecommerce.model.user.UserDto;
 import ecommerce.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;

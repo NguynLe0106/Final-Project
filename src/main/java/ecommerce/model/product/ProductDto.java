@@ -1,4 +1,4 @@
-package ecommerce.model;
+package ecommerce.model.product;
 
 import ecommerce.entity.Product;
 

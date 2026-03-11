@@ -1,4 +1,4 @@
-package ecommerce.model;
+package ecommerce.model.inventory;
 
 import ecommerce.entity.Inventory;
 

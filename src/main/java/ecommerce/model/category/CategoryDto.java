@@ -1,4 +1,4 @@
-package ecommerce.model;
+package ecommerce.model.category;
 
 import ecommerce.entity.Category;
 
