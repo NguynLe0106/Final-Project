@@ -32,8 +32,11 @@ public class Cart
     @Column(name = "deleted_date")
     private Instant deletedDate;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
+    @Column(name = "session_id", length = 100)
+    private String sessionId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
 }

@@ -1,58 +1,62 @@
 package ecommerce.controller;
-import ecommerce.entity.Product;
-import ecommerce.repository.ProductRepository;
+
+import ecommerce.service.CartService;
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Log4j2
 @AllArgsConstructor
 @Controller
-@SessionAttributes("cart")
 @RequestMapping("/cart")
 public class CartController
 {
-    private final ProductRepository productRepository;
+    private final CartService cartService;
 
-    @ModelAttribute("cart")
-    public Map<UUID, Integer> initCart()
+    @GetMapping("/view")
+    public String viewCart(HttpSession session, Model model)
     {
-        return new LinkedHashMap<>();
+        String sessionId = session.getId();
+        var lines = cartService.getLines(sessionId);
+        double subtotal = cartService.getSubtotal(sessionId);
+
+        model.addAttribute("lines", lines);
+        model.addAttribute("subtotal", subtotal);
+        model.addAttribute("total", subtotal);
+        model.addAttribute("itemCount", cartService.getItemCount(sessionId));
+        return "cartPage";
     }
 
-
-
+    @GetMapping("/abandoned")
+    public String abandonedCarts(
+            @RequestParam(value = "minAgeMinutes", defaultValue = "60") int minAgeMinutes,
+            @RequestParam(value = "limit", defaultValue = "50") int limit,
+            Model model
+    )
+    {
+        var carts = cartService.searchAbandonedCarts(minAgeMinutes, limit);
+        model.addAttribute("minAgeMinutes", minAgeMinutes);
+        model.addAttribute("limit", limit);
+        model.addAttribute("abandonedCarts", carts);
+        return "abandonedCartsPage";
+    }
 
     @PostMapping("/add")
     public String addToCart(
             @RequestParam("productId") UUID productId,
             @RequestParam(value = "quantity", defaultValue = "1") Integer quantity,
-            @ModelAttribute("cart") Map<UUID, Integer> cart
+            HttpSession session
     )
     {
-        if (quantity == null || quantity <= 0)
-        {
-            quantity = 1;
-        }
-
-        Product product = productRepository.findById(productId)
-                .orElseThrow(() -> new IllegalArgumentException("Product not found: " + productId));
-
-        cart.merge(product.getId(), quantity, Integer::sum);
+        cartService.addItem(session.getId(), productId, quantity == null ? 1 : quantity);
 
         return "redirect:/cart/view";
     }
@@ -61,22 +65,10 @@ public class CartController
     public String updateItem(
             @RequestParam("productId") UUID productId,
             @RequestParam("quantity") Integer quantity,
-            @ModelAttribute("cart") Map<UUID, Integer> cart
+            HttpSession session
     )
     {
-        if (!cart.containsKey(productId))
-        {
-            return "redirect:/cart/view";
-        }
-
-        if (quantity == null || quantity <= 0)
-        {
-            cart.remove(productId);
-        }
-        else
-        {
-            cart.put(productId, quantity);
-        }
+        cartService.updateItem(session.getId(), productId, quantity == null ? 0 : quantity);
 
         return "redirect:/cart/view";
     }
@@ -84,33 +76,18 @@ public class CartController
     @PostMapping("/remove")
     public String removeItem(
             @RequestParam("productId") UUID productId,
-            @ModelAttribute("cart") Map<UUID, Integer> cart
+            HttpSession session
     )
     {
-        cart.remove(productId);
+        cartService.removeItem(session.getId(), productId);
         return "redirect:/cart/view";
     }
 
 
     @PostMapping("/clear")
-    public String clearCart(@ModelAttribute("cart") Map<UUID, Integer> cart)
+    public String clearCart(HttpSession session)
     {
-        cart.clear();
+        cartService.clear(session.getId());
         return "redirect:/cart/view";
-    }
-
-
-    @Getter
-    public static class CartLine
-    {
-        private final Product product;
-        private final int quantity;
-
-        public CartLine(Product product, int quantity)
-        {
-            this.product = product;
-            this.quantity = quantity;
-        }
-
     }
 }

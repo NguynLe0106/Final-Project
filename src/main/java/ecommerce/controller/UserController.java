@@ -73,7 +73,8 @@ public class UserController
             if (result.hasErrors())
             {
                 log.warn("Validation errors for user {}: {}", userDto, result.getAllErrors());
-                model.addAttribute("error", result.getAllErrors().getLast().getDefaultMessage());
+                var errors = result.getAllErrors();
+                model.addAttribute("error", errors.get(errors.size() - 1).getDefaultMessage());
                 return "signupPage";
             }
 

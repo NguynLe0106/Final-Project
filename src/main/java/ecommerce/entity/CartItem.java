@@ -29,6 +29,10 @@ public class CartItem
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
+    @ColumnDefault("1")
+    @Column(name = "quantity", nullable = false)
+    private Integer quantity;
+
     @CreationTimestamp
     @ColumnDefault("getdate()")
     @Column(name = "created_at", nullable = false)
